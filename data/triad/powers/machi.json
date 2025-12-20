@@ -1,7 +1,7 @@
 {
 
- "name": "Machiavellianism",
-  "description": "You strike from behind and manipulate outcomes in your favor.",
+ "name": "§1§lMachiavellianism",
+  "description": "Your mind is calculating, manipulative, strategic.Effects: You deal extra damage when striking from behind. Trading prices improve by 20% (you manipulate deals). (or just hero of the village 5) Weakness: You take extra damage from “pure” mobs like Iron Golems and Wolves. ",
   "type": "origins:action_on_hit",
   "bientity_action": {
     "type": "origins:and",

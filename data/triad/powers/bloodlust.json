@@ -1,5 +1,7 @@
 {
     "type": "origins:action_on_hit",
+    "name": "§n§4Bloodlust",
+    "description": "Your bloodlust reeks of malice, and you get eager to end life the closer you get to it. You have a bar that fills up the more you kill. The fuller the bar, the stronger you get. When you are at maximum bloodlust, you get resistance 2, regeneration 2, saturation and health boost 2.",
     "bientity_action": {
         "type": "origins:actor_action",
         "action": {

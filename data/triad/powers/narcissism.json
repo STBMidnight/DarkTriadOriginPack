@@ -1,7 +1,7 @@
 {
   "type": "origins:action_over_time",
-  "name": "Narcissism",
-  "description": "Your presence demands attention.",
+  "name": "§c§nNarcissism",
+  "description": "Your presence demands attention. Effects: You always emit Glow (unless an ability turns it off).Gain Speed II and Strength II.Weakness: When no players or mobs are near you, you gain Slowness I (you feel ignored).",
 
   "interval": 20,
 

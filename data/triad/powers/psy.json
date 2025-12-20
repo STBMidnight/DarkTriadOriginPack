@@ -1,7 +1,7 @@
 {
     "type": "origins:multiple",
-    "name": "Psychopathy",
-    "description": "You feel no fear or guilt—only thrill.",
+    "name": "§l§cPsychopathy",
+    "description": "You feel no fear or guilt—only thrill. Effects: Permanent Fire Resistance. (Not lava). All your attacks deal a random debuff effect lasting 5 seconds and amplified by 1. Killing a mob or player refills 4 hearts instantly (you feel rewarded). Weakness: You have insomnia. (cannot sleep). Passive mobs run from you (not villagers).",
     
     "fire_resistance": {
         "type": "origins:invulnerability",
@@ -119,9 +119,7 @@
         "max": 600,
         "start_value": 0,
         "hud_render": {
-            "should_render": true,
-            "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
-            "bar_index": 7
+            "should_render": false
         }
     },
     
@@ -178,14 +176,6 @@
                 {
                     "type": "origins:execute_command",
                     "command": "effect give @s minecraft:regeneration 2 0 true"
-                },
-                {
-                    "type": "origins:execute_command",
-                    "command": "effect give @s minecraft:saturation 2 0 true"
-                },
-                {
-                    "type": "origins:execute_command",
-                    "command": "effect give @s minecraft:health_boost 2 0 true"
                 }
                 ]
             },
@@ -214,14 +204,6 @@
                 {
                     "type": "origins:execute_command",
                     "command": "effect give @s minecraft:regeneration 2 1 true"
-                },
-                {
-                    "type": "origins:execute_command",
-                    "command": "effect give @s minecraft:saturation 2 1 true"
-                },
-                {
-                    "type": "origins:execute_command",
-                    "command": "effect give @s minecraft:health_boost 2 1 true"
                 }
                 ]
             },
@@ -245,19 +227,15 @@
 
                 {
                     "type": "origins:execute_command",
-                    "command": "effect give @s minecraft:resistance 2 2 true"
+                    "command": "effect give @s minecraft:resistance 2 1 true"
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "effect give @s minecraft:regeneration 2 2 true"
+                    "command": "effect give @s minecraft:regeneration 2 1 true"
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "effect give @s minecraft:saturation 2 2 true"
-                },
-                {
-                    "type": "origins:execute_command",
-                    "command": "effect give @s minecraft:health_boost 2 2 true"
+                    "command": "effect give @s minecraft:saturation 2 0 true"
                 }
                 ]
             },
@@ -281,19 +259,19 @@
 
                 {
                     "type": "origins:execute_command",
-                    "command": "effect give @s minecraft:resistance 2 3 true"
+                    "command": "effect give @s minecraft:resistance 2 1 true"
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "effect give @s minecraft:regeneration 2 3 true"
+                    "command": "effect give @s minecraft:regeneration 2 1 true"
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "effect give @s minecraft:saturation 2 3 true"
+                    "command": "effect give @s minecraft:saturation 2 0 true"
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "effect give @s minecraft:health_boost 2 3 true"
+                    "command": "effect give @s minecraft:health_boost 2 1 true"
                 }
                 ]
             },
