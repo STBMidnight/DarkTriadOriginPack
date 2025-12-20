@@ -1,41 +1,57 @@
 {
+
+ "name": "Machiavellianism",
+  "description": "You strike from behind and manipulate outcomes in your favor.",
   "type": "origins:action_on_hit",
   "bientity_action": {
-    "type": "origins:if_else",
-    "condition": {
-      "type": "origins:relative_rotation",
-      "actor_rotation": "head",
-      "target_rotation": "body",
-      "axes": ["y"],
-      "comparison": "<=",
-      "compare_to": -0.4
-    },
-    "if_action": {
-      "type": "origins:and",
-      "actions": [
-        {
-          "type": "origins:target_action",
-          "action": {
-            "type": "origins:execute_command",
-            "command": "damage @s 5 minecraft:generic"
-          }
-        },
-        {
-          "type": "origins:actor_action",
-          "action": {
-            "type": "origins:play_sound",
-            "sound": "minecraft:entity.arrow.hit_player",
-            "volume": 1.0,
-            "pitch": 1.2
-          }
+    "type": "origins:and",
+    "actions": [
+      {
+        "type": "origins:target_action",
+        "action": {
+          "type": "origins:execute_command",
+          "command": "execute at @s rotated as @s positioned ^ ^ ^-0.5 if entity @p[distance=..1.5] run tag @s add was_backstabbed"
         }
-      ]
-    }
+      },
+      {
+        "type": "origins:delay",
+        "ticks": 1,
+        "action": {
+          "type": "origins:and",
+          "actions": [
+            {
+              "type": "origins:target_action",
+              "action": {
+                "type": "origins:if_else",
+                "condition": {
+                  "type": "origins:command",
+                  "command": "execute if entity @s[tag=was_backstabbed]",
+                  "comparison": "==",
+                  "compare_to": 1
+                },
+                "if_action": {
+                  "type": "origins:and",
+                  "actions": [
+                    {
+                      "type": "origins:execute_command",
+                      "command": "damage @s 20 minecraft:player_attack"
+                    },
+                    {
+                      "type": "origins:execute_command",
+                      "command": "playsound minecraft:entity.arrow.hit_player player @a ~ ~ ~ 1 1.2"
+                    },
+                    {
+                      "type": "origins:execute_command",
+                      "command": "tag @s remove was_backstabbed"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
   },
-  "cooldown": 20,
-  "hud_render": {
-    "should_render": false
-  },
-  "name": "Backstab",
-  "description": "Deal 4 extra damage when attacking entities from behind."
+  "cooldown": 40
 }

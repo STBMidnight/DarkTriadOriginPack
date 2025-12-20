@@ -1,0 +1,31 @@
+{
+    "type": "origins:action_when_hit",
+    "hidden": true,
+    "bientity_action": {
+        "type": "origins:target_action",
+        "action": {
+            "type": "origins:execute_command",
+            "command": "effect give @s minecraft:instant_damage 1 2 true"
+        }
+    },
+    "bientity_condition": {
+        "type": "origins:actor_condition",
+        "condition": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:command",
+                    "command": "execute if entity @s[type=minecraft:iron_golem]",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type": "origins:command",
+                    "command": "execute if entity @s[type=minecraft:wolf]",
+                    "comparison": "==",
+                    "compare_to": 1
+                }
+            ]
+        }
+    }
+}
