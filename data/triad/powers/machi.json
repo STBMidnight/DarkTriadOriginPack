@@ -1,0 +1,41 @@
+{
+  "type": "origins:action_on_hit",
+  "bientity_action": {
+    "type": "origins:if_else",
+    "condition": {
+      "type": "origins:relative_rotation",
+      "actor_rotation": "head",
+      "target_rotation": "body",
+      "axes": ["y"],
+      "comparison": "<=",
+      "compare_to": -0.4
+    },
+    "if_action": {
+      "type": "origins:and",
+      "actions": [
+        {
+          "type": "origins:target_action",
+          "action": {
+            "type": "origins:execute_command",
+            "command": "damage @s 5 minecraft:generic"
+          }
+        },
+        {
+          "type": "origins:actor_action",
+          "action": {
+            "type": "origins:play_sound",
+            "sound": "minecraft:entity.arrow.hit_player",
+            "volume": 1.0,
+            "pitch": 1.2
+          }
+        }
+      ]
+    }
+  },
+  "cooldown": 20,
+  "hud_render": {
+    "should_render": false
+  },
+  "name": "Backstab",
+  "description": "Deal 4 extra damage when attacking entities from behind."
+}

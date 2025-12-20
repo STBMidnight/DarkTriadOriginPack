@@ -1,6 +1,7 @@
 {
 	"powers": [
-		"triad:simple"
+		"triad:narcissism",
+		"triad:machi"
 	],
 	"icon": {
 		"id": "minecraft:ominous_bottle"
