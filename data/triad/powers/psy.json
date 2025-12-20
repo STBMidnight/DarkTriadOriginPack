@@ -1,0 +1,183 @@
+{
+    "type": "origins:multiple",
+    "name": "Psychopathy",
+    "description": "You feel no fear or guilt—only thrill.",
+    
+    "fire_resistance": {
+        "type": "origins:invulnerability",
+        "damage_condition": {
+            "type": "origins:name",
+            "name": "inFire"
+        }
+    },
+    
+    "fire_resistance_2": {
+        "type": "origins:invulnerability",
+        "damage_condition": {
+            "type": "origins:name",
+            "name": "onFire"
+        }
+    },
+    
+    "random_debuff": {
+        "type": "origins:action_when_hit",
+        "bientity_action": {
+            "type": "origins:actor_action",
+            "action": {
+                "type": "origins:chance",
+                "action": {
+                    "type": "origins:execute_command",
+                    "command": "effect give @s minecraft:slowness 5 1"
+                },
+                "chance": 0.33
+            }
+        },
+        "damage_condition": {
+            "type": "origins:attacker",
+            "entity_condition": {
+                "type": "origins:exists"
+            }
+        }
+    },
+    
+    "random_debuff_2": {
+        "type": "origins:action_when_hit",
+        "bientity_action": {
+            "type": "origins:actor_action",
+            "action": {
+                "type": "origins:chance",
+                "action": {
+                    "type": "origins:execute_command",
+                    "command": "effect give @s minecraft:hunger 5 1"
+                },
+                "chance": 0.33
+            }
+        },
+        "damage_condition": {
+            "type": "origins:attacker",
+            "entity_condition": {
+                "type": "origins:exists"
+            }
+        }
+    },
+    
+    "random_debuff_3": {
+        "type": "origins:action_when_hit",
+        "bientity_action": {
+            "type": "origins:actor_action",
+            "action": {
+                "type": "origins:chance",
+                "action": {
+                    "type": "origins:execute_command",
+                    "command": "effect give @s minecraft:poison 5 1"
+                },
+                "chance": 0.34
+            }
+        },
+        "damage_condition": {
+            "type": "origins:attacker",
+            "entity_condition": {
+                "type": "origins:exists"
+            }
+        }
+    },
+    
+    "kill_heal": {
+        "type": "origins:action_on_kill",
+        "bientity_action": {
+            "type": "origins:actor_action",
+            "action": {
+                "type": "origins:execute_command",
+                "command": "effect give @s minecraft:instant_health 1 1 true"
+            }
+        }
+    },
+    
+    "insomnia": {
+        "type": "origins:prevent_sleep",
+        "message": "Your psychopathy prevents you from sleeping.",
+        "set_spawn_point": false
+    },
+    
+    "scare_passives": {
+        "type": "origins:action_over_time",
+        "interval": 20,
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "execute as @e[type=#minecraft:passive_mobs,distance=..8,type=!minecraft:villager] at @s run tp @s ~ ~ ~ facing entity @p[distance=..8] feet"
+        }
+    },
+    
+    "scare_passives_run": {
+        "type": "origins:action_over_time",
+        "interval": 20,
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "execute as @e[type=#minecraft:passive_mobs,distance=..8,type=!minecraft:villager] at @s run tp @s ^ ^ ^-0.3"
+        }
+    },
+    
+    "bloodlust_resource": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 100,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+            "bar_index": 6
+        },
+        "min_action": {
+            "type": "origins:execute_command",
+            "command": "effect clear @s minecraft:resistance"
+        }
+    },
+    
+    "bloodlust_timer": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 600,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+            "bar_index": 7
+        }
+    },
+    
+    "bloodlust_timer_tick": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_bloodlust_timer",
+            "change": 1
+        }
+    },
+    
+    "bloodlust_decay": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_bloodlust_resource",
+                    "change": -100
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_bloodlust_timer",
+                    "change": -600
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_bloodlust_timer",
+            "comparison": ">=",
+            "compare_to": 600
+        }
+    }
+}

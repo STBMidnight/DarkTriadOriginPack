@@ -3,7 +3,8 @@
 		"triad:narcissism",
 		"triad:machi",
 		"triad:villager",
-		"triad:pure"
+		"triad:pure",
+		"triad:psy"
 	],
 	"icon": {
 		"id": "minecraft:ominous_bottle"
