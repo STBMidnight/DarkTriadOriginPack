@@ -82,17 +82,6 @@
         }
     },
     
-    "kill_heal": {
-        "type": "origins:action_on_kill",
-        "bientity_action": {
-            "type": "origins:actor_action",
-            "action": {
-                "type": "origins:execute_command",
-                "command": "effect give @s minecraft:instant_health 1 1 true"
-            }
-        }
-    },
-    
     "insomnia": {
         "type": "origins:prevent_sleep",
         "message": "Your psychopathy prevents you from sleeping.",
@@ -104,19 +93,10 @@
         "interval": 20,
         "entity_action": {
             "type": "origins:execute_command",
-            "command": "execute as @e[type=#minecraft:passive_mobs,distance=..8,type=!minecraft:villager] at @s run tp @s ~ ~ ~ facing entity @p[distance=..8] feet"
+            "command": "execute as @e[type=#minecraft:followable_friendly_mobs,distance=..8,type=!minecraft:villager] run damage @s 0.01 minecraft:player_attack"
         }
     },
-    
-    "scare_passives_run": {
-        "type": "origins:action_over_time",
-        "interval": 20,
-        "entity_action": {
-            "type": "origins:execute_command",
-            "command": "execute as @e[type=#minecraft:passive_mobs,distance=..8,type=!minecraft:villager] at @s run tp @s ^ ^ ^-0.3"
-        }
-    },
-    
+
     "bloodlust_resource": {
         "type": "origins:resource",
         "min": 0,
@@ -178,6 +158,150 @@
             "resource": "*:*_bloodlust_timer",
             "comparison": ">=",
             "compare_to": 600
+        }
+    },
+        "bloodlust_level_1": {
+            "type": "origins:action_over_time",
+            "name": "Narcissism",
+            "description": "Your presence demands attention.",
+
+            "interval": 20,
+
+            "entity_action": {
+                "type": "origins:and",
+                "actions": [
+
+                {
+                    "type": "origins:execute_command",
+                    "command": "effect give @s minecraft:resistance 2 0 true"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "effect give @s minecraft:regeneration 2 0 true"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "effect give @s minecraft:saturation 2 0 true"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "effect give @s minecraft:health_boost 2 0 true"
+                }
+                ]
+            },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_bloodlust_resource",
+            "comparison": ">=",
+            "compare_to": 25
+        }
+    },
+        "bloodlust_level_2": {
+            "type": "origins:action_over_time",
+            "name": "Narcissism",
+            "description": "Your presence demands attention.",
+
+            "interval": 20,
+
+            "entity_action": {
+                "type": "origins:and",
+                "actions": [
+
+                {
+                    "type": "origins:execute_command",
+                    "command": "effect give @s minecraft:resistance 2 1 true"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "effect give @s minecraft:regeneration 2 1 true"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "effect give @s minecraft:saturation 2 1 true"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "effect give @s minecraft:health_boost 2 1 true"
+                }
+                ]
+            },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_bloodlust_resource",
+            "comparison": ">=",
+            "compare_to": 50
+        }
+    },
+        "bloodlust_level_3": {
+            "type": "origins:action_over_time",
+            "name": "Narcissism",
+            "description": "Your presence demands attention.",
+
+            "interval": 20,
+
+            "entity_action": {
+                "type": "origins:and",
+                "actions": [
+
+                {
+                    "type": "origins:execute_command",
+                    "command": "effect give @s minecraft:resistance 2 2 true"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "effect give @s minecraft:regeneration 2 2 true"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "effect give @s minecraft:saturation 2 2 true"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "effect give @s minecraft:health_boost 2 2 true"
+                }
+                ]
+            },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_bloodlust_resource",
+            "comparison": ">=",
+            "compare_to": 75
+        }
+    },
+        "bloodlust_level_4": {
+            "type": "origins:action_over_time",
+            "name": "Narcissism",
+            "description": "Your presence demands attention.",
+
+            "interval": 20,
+
+            "entity_action": {
+                "type": "origins:and",
+                "actions": [
+
+                {
+                    "type": "origins:execute_command",
+                    "command": "effect give @s minecraft:resistance 2 3 true"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "effect give @s minecraft:regeneration 2 3 true"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "effect give @s minecraft:saturation 2 3 true"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "effect give @s minecraft:health_boost 2 3 true"
+                }
+                ]
+            },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_bloodlust_resource",
+            "comparison": ">=",
+            "compare_to": 100
         }
     }
 }
