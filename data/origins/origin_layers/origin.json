@@ -1,7 +1,7 @@
 {
   "replace": false,
   "origins": [
-    "mid:darktriad"
+    "triad:darktriad"
   ],
   "loading_priority": 10
 }

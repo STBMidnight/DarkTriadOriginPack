@@ -1,7 +1,5 @@
 {
 	"powers": [
-        "mid:simple",
-        "mid:exhaustion"
 	],
 	"icon": {
 		"id": "minecraft:ominous_bottle"
