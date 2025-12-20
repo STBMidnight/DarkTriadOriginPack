@@ -1,5 +1,6 @@
 {
 	"powers": [
+		"triad:simple"
 	],
 	"icon": {
 		"id": "minecraft:ominous_bottle"
