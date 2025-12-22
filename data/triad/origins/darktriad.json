@@ -5,7 +5,8 @@
 		"triad:villager",
 		"triad:pure",
 		"triad:psy",
-		"triad:bloodlust"
+		"triad:bloodlust",
+		"triad:shadow"
 	],
 	"icon": {
 		"id": "minecraft:ominous_bottle"

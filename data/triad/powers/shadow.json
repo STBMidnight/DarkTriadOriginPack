@@ -1,0 +1,183 @@
+{
+    "type": "origins:multiple",
+    "name": "Shadow Persona",
+    "description": "Suppress your narcissism to stalk unseen.",
+    
+    "shadow_active": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    
+    "shadow_cooldown": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1200,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+            "bar_index": 8
+        }
+    },
+    
+    "shadow_cooldown_tick": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_shadow_cooldown",
+            "change": -1
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_shadow_cooldown",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    },
+    
+    "shadow_toggle": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:resource",
+                "resource": "*:*_shadow_active",
+                "comparison": "==",
+                "compare_to": 0
+            },
+            "if_action": {
+                "type": "origins:change_resource",
+                "resource": "*:*_shadow_active",
+                "change": 1
+            },
+            "else_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_shadow_active",
+                        "change": -1
+                    },
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_shadow_cooldown",
+                        "change": 1200
+                    }
+                ]
+            }
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_shadow_cooldown",
+            "comparison": "==",
+            "compare_to": 0
+        },
+        "cooldown": 1,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
+            "bar_index": 3
+        },
+        "key": {
+            "key": "key.origins.primary_active"
+        }
+    },
+    
+    "invisibility": {
+        "type": "origins:invisibility",
+        "render_armor": false,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_shadow_active",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    
+    "player_kill_timer": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 600,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    
+    "detect_player_kill": {
+        "type": "origins:action_on_hit",
+        "bientity_action": {
+            "type": "origins:actor_action",
+            "action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_player_kill_timer",
+                        "change": 600
+                    },
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_shadow_active",
+                        "change": -1
+                    }
+                ]
+            }
+        },
+        "bientity_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:actor_condition",
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "*:*_shadow_active",
+                        "comparison": "==",
+                        "compare_to": 1
+                    }
+                },
+                {
+                    "type": "origins:target_condition",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                               "type": "origins:command",
+                                "command": "execute if entity @s[type=minecraft:player]",
+                                "comparison": "==",
+                                "compare_to": 1
+                            },
+                            {
+                                "type": "origins:health",
+                                "comparison": "<=",
+                                "compare_to": 2.0
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    
+    "player_kill_timer_tick": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_player_kill_timer",
+            "change": -1
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_player_kill_timer",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    }
+}

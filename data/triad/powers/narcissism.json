@@ -27,5 +27,11 @@
         "command": "execute unless entity @e[distance=0.0001..16] run effect give @s minecraft:slowness 2 4 true"
       }
     ]
+  },
+  "condition": {
+      "type": "origins:resource",
+      "resource": "triad:shadow_shadow_active",
+      "comparison": "==",
+      "compare_to": 0
   }
 }
