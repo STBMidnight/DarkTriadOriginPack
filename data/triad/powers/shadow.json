@@ -17,11 +17,11 @@
         "type": "origins:resource",
         "min": 0,
         "max": 1200,
-        "start_value": 0,
+        "start_value": 1200,
         "hud_render": {
             "should_render": true,
             "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
-            "bar_index": 8
+            "bar_index": 5
         }
     },
     
@@ -31,13 +31,13 @@
         "entity_action": {
             "type": "origins:change_resource",
             "resource": "*:*_shadow_cooldown",
-            "change": -1
+            "change": 1
         },
         "condition": {
             "type": "origins:resource",
             "resource": "*:*_shadow_cooldown",
-            "comparison": ">",
-            "compare_to": 0
+            "comparison": "<",
+            "compare_to": 1200
         }
     },
     
@@ -62,6 +62,10 @@
                     {
                         "type": "origins:execute_command",
                         "command": "particle minecraft:campfire_cosy_smoke ~ ~1 ~ 0.2 0.2 0.2 0.05 50"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "playsound minecraft:block.leaf_litter.fall ambient @s ~ ~ ~ 0.8"
                     }
                 ]
             },
@@ -76,11 +80,15 @@
                     {
                         "type": "origins:change_resource",
                         "resource": "*:*_shadow_cooldown",
-                        "change": 1200
+                        "change": -1200
                     },
                     {
                         "type": "origins:execute_command",
                         "command": "particle minecraft:campfire_cosy_smoke ~ ~1 ~ 0.2 0.2 0.2 0.05 50"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "playsound minecraft:block.leaf_litter.fall ambient @s ~ ~ ~ 0.8"
                     }
                 ]
             }
@@ -89,13 +97,11 @@
             "type": "origins:resource",
             "resource": "*:*_shadow_cooldown",
             "comparison": "==",
-            "compare_to": 0
+            "compare_to": 1200
         },
         "cooldown": 1,
         "hud_render": {
-            "should_render": true,
-            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
-            "bar_index": 3
+            "should_render": false
         },
         "key": {
             "key": "key.origins.primary_active"
@@ -120,7 +126,7 @@
         "start_value": 0,
         "hud_render": {
             "should_render": true,
-            "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
             "bar_index": 9
         }
     },
@@ -215,7 +221,7 @@
                     {
                         "type": "origins:change_resource",
                         "resource": "*:*_shadow_cooldown",
-                        "change": 1200
+                        "change": -1200
                     },
                     {
                         "type": "origins:execute_command",

@@ -43,25 +43,11 @@
         }
     },
     
-    "rotten_flesh_buff": {
-        "type": "origins:action_on_item_use",
-        "entity_action": {
-            "type": "origins:execute_command",
-            "command": "effect clear @s minecraft:hunger"
-        },
-        "item_condition": {
-            "type": "origins:ingredient",
-            "ingredient": {
-                "item": "minecraft:rotten_flesh"
-            }
-        }
-    },
-    
     "rotten_flesh_saturation": {
         "type": "origins:action_on_item_use",
         "entity_action": {
             "type": "origins:execute_command",
-            "command": "effect give @s minecraft:saturation 1 2 true"
+            "command": "effect give @s minecraft:saturation 1 0 true"
         },
         "item_condition": {
             "type": "origins:ingredient",
