@@ -1,7 +1,7 @@
 {
     "type": "origins:multiple",
-    "name": "Drawbacks",
-    "description": "Your twisted nature comes with consequences.",
+    "name": "§4§lDRAWBACKS:",
+    "description": "Your twisted nature comes with consequences. You can only eat rotten flesh, golden carrots, and golden apples. Additionally, using pickaxes and axes causes you to gain mining fatigue.",
     
     "restrict_food": {
         "type": "origins:prevent_item_use",

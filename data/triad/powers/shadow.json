@@ -1,7 +1,7 @@
 {
     "type": "origins:multiple",
-    "name": "Shadow Persona",
-    "description": "Suppress your narcissism to stalk unseen.",
+    "name": "§8§oShadow Persona",
+    "description": "Suppress your narcissism to stalk unseen. When active, you become §linvisible§r. When you kill a player while in shadow form, your shadow persona is forcibly removed after 30 seconds, putting your shadow ability on cooldown.",
     
     "shadow_active": {
         "type": "origins:resource",
@@ -17,7 +17,7 @@
         "type": "origins:resource",
         "min": 0,
         "max": 1200,
-        "start_value": 1200,
+        "start_value": 0,
         "hud_render": {
             "should_render": true,
             "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
@@ -176,6 +176,12 @@
                                 "type": "origins:health",
                                 "comparison": "<=",
                                 "compare_to": 2.0
+                            },
+                            {
+                                "type": "origins:command",
+                                "command": "execute if entity @s[type=minecraft:player]",
+                                "comparison": "==",
+                                "compare_to": 1
                             }
                         ]
                     }
