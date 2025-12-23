@@ -106,7 +106,9 @@
         "max": 600,
         "start_value": 0,
         "hud_render": {
-            "should_render": false
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+            "bar_index": 9
         }
     },
     
@@ -121,11 +123,6 @@
                         "type": "origins:change_resource",
                         "resource": "*:*_player_kill_timer",
                         "change": 600
-                    },
-                    {
-                        "type": "origins:change_resource",
-                        "resource": "*:*_shadow_active",
-                        "change": -1
                     }
                 ]
             }
@@ -143,16 +140,19 @@
                     }
                 },
                 {
+                    "type": "origins:actor_condition",
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "*:*_player_kill_timer",
+                        "comparison": "==",
+                        "compare_to": 0
+                    }
+                },
+                {
                     "type": "origins:target_condition",
                     "condition": {
                         "type": "origins:and",
                         "conditions": [
-                            {
-                               "type": "origins:command",
-                                "command": "execute if entity @s[type=minecraft:player]",
-                                "comparison": "==",
-                                "compare_to": 1
-                            },
                             {
                                 "type": "origins:health",
                                 "comparison": "<=",
@@ -178,6 +178,70 @@
             "resource": "*:*_player_kill_timer",
             "comparison": ">",
             "compare_to": 0
+        }
+    },
+    "shadow_reset": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:resource",
+                "resource": "*:*_player_kill_timer",
+                "comparison": "==",
+                "compare_to": 1
+            },
+            "if_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_shadow_active",
+                        "change": -1
+                    },
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_shadow_cooldown",
+                        "change": 1200
+                    }
+                ]
+            }
+        }
+    },
+    "mining_fatigue": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action":{
+            "type": "origins:execute_command",
+            "command": "effect give @s minecraft:mining_fatigue 2 1 true"
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+            {
+                "type": "origins:resource",
+                "resource": "*:*_shadow_active",
+                "comparison": "==",
+                "compare_to": 1
+            },
+            {
+                "type": "origins:equipped_item",
+                "equipment_slot": "mainhand",
+                "item_condition": {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:ingredient",
+                            "ingredient": {"tag": "minecraft:pickaxes"}
+                        },
+                        {
+                            "type": "origins:ingredient",
+                            "ingredient": {"tag": "minecraft:axes"}
+                        }
+                    ]
+                }
+            }
+            ]
         }
     }
 }
