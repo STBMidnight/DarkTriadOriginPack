@@ -20,9 +20,9 @@
     },
     
     "random_debuff": {
-        "type": "origins:action_when_hit",
+        "type": "origins:action_on_hit",
         "bientity_action": {
-            "type": "origins:actor_action",
+            "type": "origins:target_action",
             "action": {
                 "type": "origins:chance",
                 "action": {
@@ -31,19 +31,13 @@
                 },
                 "chance": 0.33
             }
-        },
-        "damage_condition": {
-            "type": "origins:attacker",
-            "entity_condition": {
-                "type": "origins:exists"
-            }
         }
     },
     
     "random_debuff_2": {
-        "type": "origins:action_when_hit",
+        "type": "origins:action_on_hit",
         "bientity_action": {
-            "type": "origins:actor_action",
+            "type": "origins:target_action",
             "action": {
                 "type": "origins:chance",
                 "action": {
@@ -52,19 +46,13 @@
                 },
                 "chance": 0.33
             }
-        },
-        "damage_condition": {
-            "type": "origins:attacker",
-            "entity_condition": {
-                "type": "origins:exists"
-            }
         }
     },
     
     "random_debuff_3": {
-        "type": "origins:action_when_hit",
+        "type": "origins:action_on_hit",
         "bientity_action": {
-            "type": "origins:actor_action",
+            "type": "origins:target_action",
             "action": {
                 "type": "origins:chance",
                 "action": {
@@ -72,12 +60,6 @@
                     "command": "effect give @s minecraft:poison 5 1"
                 },
                 "chance": 0.34
-            }
-        },
-        "damage_condition": {
-            "type": "origins:attacker",
-            "entity_condition": {
-                "type": "origins:exists"
             }
         }
     },
