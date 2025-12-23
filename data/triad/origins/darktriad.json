@@ -6,7 +6,8 @@
 		"triad:pure",
 		"triad:psy",
 		"triad:bloodlust",
-		"triad:shadow"
+		"triad:shadow",
+		"triad:drawbacks"
 	],
 	"icon": {
 		"id": "minecraft:ominous_bottle"

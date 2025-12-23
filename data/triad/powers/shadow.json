@@ -52,9 +52,18 @@
                 "compare_to": 0
             },
             "if_action": {
-                "type": "origins:change_resource",
-                "resource": "*:*_shadow_active",
-                "change": 1
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_shadow_active",
+                        "change": 1
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:campfire_cosy_smoke ~ ~1 ~ 0.2 0.2 0.2 0.05 50"
+                    }
+                ]
             },
             "else_action": {
                 "type": "origins:and",
@@ -68,6 +77,10 @@
                         "type": "origins:change_resource",
                         "resource": "*:*_shadow_cooldown",
                         "change": 1200
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:campfire_cosy_smoke ~ ~1 ~ 0.2 0.2 0.2 0.05 50"
                     }
                 ]
             }
@@ -203,45 +216,13 @@
                         "type": "origins:change_resource",
                         "resource": "*:*_shadow_cooldown",
                         "change": 1200
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "particle minecraft:campfire_cosy_smoke ~ ~1 ~ 0.2 0.2 0.2 0.05 50"
                     }
                 ]
             }
-        }
-    },
-    "mining_fatigue": {
-        "type": "origins:action_over_time",
-        "interval": 1,
-        "entity_action":{
-            "type": "origins:execute_command",
-            "command": "effect give @s minecraft:mining_fatigue 2 1 true"
-        },
-        "condition": {
-            "type": "origins:and",
-            "conditions": [
-            {
-                "type": "origins:resource",
-                "resource": "*:*_shadow_active",
-                "comparison": "==",
-                "compare_to": 1
-            },
-            {
-                "type": "origins:equipped_item",
-                "equipment_slot": "mainhand",
-                "item_condition": {
-                    "type": "origins:or",
-                    "conditions": [
-                        {
-                            "type": "origins:ingredient",
-                            "ingredient": {"tag": "minecraft:pickaxes"}
-                        },
-                        {
-                            "type": "origins:ingredient",
-                            "ingredient": {"tag": "minecraft:axes"}
-                        }
-                    ]
-                }
-            }
-            ]
         }
     }
 }
